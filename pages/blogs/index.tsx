@@ -1,13 +1,17 @@
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 
 import { server } from '../../config';
 
 function BlogPosts({ posts }) {
   return (
     <ul>
+      
       {posts.map((post) => (
         <li key={post.id}>
-          <h3>{post.title}</h3>
+          <Link href={`/blogs/${encodeURIComponent(post.id)}`}>
+            <a>{post.title}</a>
+          </Link>
           <p>{post.text}</p>
         </li>
       ))}

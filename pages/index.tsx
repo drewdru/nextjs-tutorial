@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link'
+
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
@@ -8,6 +10,24 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <header>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/profile">
+          <a>Profile</a>
+        </Link>
+        <Link href="/ssrPage">
+          <a>SsrPage</a>
+        </Link>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+        <Link href="/blogs">
+          <a>Blogs</a>
+        </Link>
+      </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
