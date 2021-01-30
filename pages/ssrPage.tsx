@@ -1,4 +1,7 @@
+import { GetServerSideProps } from 'next'
+import { InferGetStaticPropsType } from 'next'
 import { server } from '../config';
+
 function SsrPage({ data }) {
   return (
     <div>
@@ -9,7 +12,7 @@ function SsrPage({ data }) {
 }
 
 // This gets called on every request
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   // Fetch data from external API
   const res = await fetch(`${server}/api/data`)
   const data = await res.json()

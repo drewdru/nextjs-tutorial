@@ -1,3 +1,4 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { server } from '../../config';
 
 function BlogPost({ post }) {
@@ -10,7 +11,7 @@ function BlogPost({ post }) {
 }
 
 // This function gets called at build time
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   // Call an external API endpoint to get posts
   const res = await fetch(`${server}/api/posts`)
   const posts = await res.json()
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
   const res = await fetch(`${server}/api/posts/${params.id}`)

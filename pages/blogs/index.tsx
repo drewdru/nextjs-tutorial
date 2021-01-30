@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next'
+
 import { server } from '../../config';
 
 function BlogPosts({ posts }) {
@@ -14,7 +16,7 @@ function BlogPosts({ posts }) {
 }
 
 // This function gets called at build time
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   // Call an external API endpoint to get posts
   const res = await fetch(`${server}/api/posts`)
 
